@@ -19,7 +19,7 @@
     <string name="chat_session_status_11">有%d条新消息</string>
     <string name="chat_session_status_4">%s 将为您服务</string>
     <string name="chat_session_status_6">您已结束人工客服服务</string>
-    <string name="chat_session_status_2">正在为您努力转接到人工服务中，当前排队人数%d人，请稍后</string>
+    <string name="chat_session_status_2">正在为您努力转接到人工服务中，当前排队人数“%d”人，请稍后</string>
     <string name="chat_session_status_5">正在为您转接客服，请稍后</string>
     <string name="chat_session_status_7">当前暂无客服接入，请稍后尝试</string>
     <string name="chat_session_status_14">智能机器人</string>

@@ -17,9 +17,9 @@
     <string name="chat_session_status_12">Please enter the question you want to consult.</string>
     <string name="chat_session_status_10">Bottom</string>
     <string name="chat_session_status_11">You have %d new messages</string>
-    <string name="chat_session_status_4">%s service will be at your service</string>
+    <string name="chat_session_status_4">“%s” service will be at your service</string>
     <string name="chat_session_status_6">You have ended the manual customer service</string>
-    <string name="chat_session_status_2">We are working hard to transfer you to the human service. Currently, there are %d people in the queue. Please wait a moment</string>
+    <string name="chat_session_status_2">We are working hard to transfer you to the human service. Currently, there are “%d” people in the queue. Please wait a moment</string>
     <string name="chat_session_status_5">We are currently transferring you to customer service. Please wait a moment</string>
     <string name="chat_session_status_7">Currently, there is no customer service access available. Please try again later</string>
     <string name="chat_session_status_14">Intelligent Robot</string>

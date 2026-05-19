@@ -1,0 +1,44 @@
+<resources>
+    <!-- General -->
+    <string name="chat_session_status_13">Sao chép thành công</string>
+    <string name="save_success">Lưu thành công</string>
+    <string name="chat_session_status_18">Lưu</string>
+
+    <!-- Chat Interface -->
+    <string name="chat_session_status_1">Chăm sóc khách hàng trực tuyến</string>
+    <string name="chat_session_status_9">Mạng không khả dụng, vui lòng kiểm tra mạng của bạn</string>
+    <string name="chat_session_status_8">Tài khoản của bạn đã đăng nhập ở nơi khác, vui lòng tải lại trang để tiếp tục cuộc trò chuyện</string>
+    <string name="chat_session_status_27">Bản ghi này không khả dụng</string>
+    <string name="chat_session_status_24">Kích thước ảnh vượt quá giới hạn</string>
+    <string name="chat_session_status_25">Kích thước video vượt quá giới hạn</string>
+    <string name="chat_session_status_23">Không thể gửi tin nhắn trống</string>
+    <string name="chat_session_status_3">Bạn đã không phản hồi quá %d phút</string>
+    <string name="chat_session_status_28">Điểm kiến thức hiện tại không tồn tại hoặc đã bị xóa</string>
+    <string name="chat_session_status_12">Vui lòng nhập câu hỏi bạn muốn tư vấn</string>
+    <string name="chat_session_status_10">Quay lại cuối trang</string>
+    <string name="chat_session_status_11">Bạn có %d tin nhắn mới</string>
+    <string name="chat_session_status_4">“%s” sẽ phục vụ bạn</string>
+    <string name="chat_session_status_6">Bạn đã kết thúc dịch vụ chăm sóc khách hàng</string>
+    <string name="chat_session_status_2">Đang chuyển bạn đến nhân viên tư vấn, số người đang xếp hàng hiện tại: “%d” người, vui lòng đợi</string>
+    <string name="chat_session_status_5">Đang chuyển bạn đến nhân viên tư vấn, vui lòng đợi</string>
+    <string name="chat_session_status_7">Hiện chưa có nhân viên tư vấn, vui lòng thử lại sau</string>
+    <string name="chat_session_status_14">Bot thông minh</string>
+    <string name="chat_session_status_16">Người dùng %s</string>
+    <string name="chat_session_status_15">Khách %s</string>
+
+    <!-- FAQ -->
+    <string name="faq_default_greeting">Xin chào~ Vui lòng mô tả ngắn gọn câu hỏi của bạn và chúng tôi sẽ cố gắng hết sức để giúp đỡ</string>
+    <string name="not_implemented">Chưa được triển khai. --->>> { %d }</string>
+
+    <!-- Image Viewer -->
+    <string name="content_description_back">Quay lại</string>
+    <string name="content_description_send_fail">Gửi thất bại</string>
+    <string name="content_description_read">Đã đọc</string>
+    <string name="content_description_close">Đóng</string>
+    <!--    -->
+    <string name="chat_session_status_30">Kết thúc dịch vụ</string>
+    <string name="chat_session_status_31">Xác nhận kết thúc dịch vụ</string>
+    <string name="chat_session_status_32">Hủy</string>
+    <string name="chat_session_status_33">Cảm ơn bạn đã tư vấn, hy vọng có thể phục vụ bạn lần sau</string>
+    <string name="chat_session_status_34">Nhân viên tư vấn</string>
+</resources>

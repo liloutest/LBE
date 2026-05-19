@@ -339,7 +339,9 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
             return
         }
         val language = initArgs.language.let {
-            if (it == "0" || it.contains("zh")) "zh" else "en"
+            if (it == "0" || it.contains("zh")) "zh" 
+            else if (it == "2" || it.contains("vi")) "vi"
+            else "en"
         }
         val result = safeApiCall {
             imApiRepository?.createSession(
