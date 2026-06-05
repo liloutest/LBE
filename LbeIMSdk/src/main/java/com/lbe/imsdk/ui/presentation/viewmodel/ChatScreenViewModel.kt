@@ -224,11 +224,13 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
 
     fun initSdk(args: InitArgs) {
         lbeSign = args.lbeSign
-        isGuest = args.nickId.isEmpty()
-        nickId = args.nickId.ifEmpty {
+        isGuest = args.nickId.isEmpty() || args.nickId == "0"
+        nickId = if (isGuest) {
             sharedPreferences.edit().putBoolean("needSaveNickId", true).apply()
             isAnonymous = true
             sharedPreferences.getString("anonymousNickId", "").toString()
+        } else {
+            args.nickId
         }
         nickName = args.nickName
         userAvatar = args.headerIcon
@@ -339,7 +341,7 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
             return
         }
         val language = initArgs.language.let {
-            if (it == "0" || it.contains("zh")) "zh" 
+            if (it == "0" || it.contains("zh")) "zh"
             else if (it == "2" || it.contains("vi")) "vi"
             else "en"
         }
@@ -695,7 +697,7 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
                 seq = history.data.content.last().msgSeq
                 for (content in history.data.content) {
                     when (content.msgType) {
-                        1, 2, 4, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13,14 -> {
+                        1, 2, 4, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 -> {
                             val entity = MessageEntity().apply {
                                 sessionId = content.sessionId
                                 senderUid = content.senderUid
