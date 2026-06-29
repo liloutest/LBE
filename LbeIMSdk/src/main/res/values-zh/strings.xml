@@ -41,4 +41,5 @@
     <string name="chat_session_status_32">取消</string>
     <string name="chat_session_status_33">感谢您的咨询，希望下次还可以为您服务</string>
     <string name="chat_session_status_34">人工客服</string>
+    <string name="str_grant_permission_fail">需要存储权限来选择和共享照片与视频</string>
 </resources>

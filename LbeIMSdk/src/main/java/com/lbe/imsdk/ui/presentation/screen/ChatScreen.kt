@@ -8,7 +8,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.provider.MediaStore
+import android.provider.Settings
 import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -48,6 +50,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.shouldShowRationale
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -56,7 +61,6 @@ import androidx.navigation.NavController
 import coil3.ImageLoader
 import coil3.compose.AsyncImage
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.gson.Gson
 import com.lbe.imsdk.R
 import com.lbe.imsdk.model.MediaMessage
@@ -198,10 +202,7 @@ fun ChatScreen(
         ),
         onPermissionsResult = { permits ->
             println("授权回调--->>> $permits")
-            var allPermitted = false
-            for (permit in permits.values) {
-                allPermitted = permit
-            }
+            val allPermitted = permits.values.all { it }
             if (allPermitted) {
                 launcher.launch(
                     PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageAndVideo)
@@ -344,7 +345,7 @@ fun ChatScreen(
                         contentPadding = PaddingValues(top = 20.dp, bottom = 20.dp),
                         state = lazyListState
                     ) {
-                       val msgList= uiState.messages.toList()
+                        val msgList = uiState.messages.toList()
                         itemsIndexed(
                             msgList,
                         ) { index, message ->
@@ -437,12 +438,25 @@ fun ChatScreen(
                                 .clip(CircleShape)
                                 .align(Alignment.BottomStart)
                                 .clickable {
-                                    // 点击选择图片或视频
-                                    if (!mediaPermissionState.allPermissionsGranted) {
-                                        println("授权检查--->>> ${mediaPermissionState.permissions.map { e -> "${e.permission}, ${e.status}" }} ||||| ${mediaPermissionState.allPermissionsGranted}")
+                                    if (mediaPermissionState.allPermissionsGranted) {
+                                        launcher.launch(PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageAndVideo))
+                                    } else if (mediaPermissionState.shouldShowRationale) {
                                         mediaPermissionState.launchMultiplePermissionRequest()
                                     } else {
-                                        launcher.launch(PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageAndVideo))
+                                        val isAnyPermissionPermanentlyDenied =
+                                            mediaPermissionState.permissions.any { !it.status.isGranted && !it.status.shouldShowRationale }
+                                        if (isAnyPermissionPermanentlyDenied) {
+                                            Toast.makeText(
+                                                context,
+                                                context.getString(R.string.str_grant_permission_fail),
+                                                Toast.LENGTH_LONG,
+                                            ).apply {
+                                                setGravity(Gravity.CENTER, 0, 0)
+                                                show()
+                                            }
+                                        } else {
+                                            mediaPermissionState.launchMultiplePermissionRequest()
+                                        }
                                     }
                                 }) {
                             Image(

@@ -41,4 +41,5 @@
     <string name="chat_session_status_32">Hủy</string>
     <string name="chat_session_status_33">Cảm ơn bạn đã tư vấn, hy vọng có thể phục vụ bạn lần sau</string>
     <string name="chat_session_status_34">Nhân viên tư vấn</string>
+    <string name="str_grant_permission_fail">Bạn cần có quyền truy cập bộ nhớ để chọn và chia sẻ ảnh và video.</string>
 </resources>

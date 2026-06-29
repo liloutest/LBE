@@ -41,4 +41,5 @@
     <string name="chat_session_status_32">Cancel</string>
     <string name="chat_session_status_33">Thank you for your inquiry. Hope to serve you again next time.</string>
     <string name="chat_session_status_34">Customer service representative</string>
+    <string name="str_grant_permission_fail">Storage permissions are required to select and share photos and videos.</string>
 </resources>
