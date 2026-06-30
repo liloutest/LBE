@@ -224,13 +224,11 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
 
     fun initSdk(args: InitArgs) {
         lbeSign = args.lbeSign
-        isGuest = args.nickId.isEmpty() || args.nickId == "0"
-        nickId = if (isGuest) {
+        isGuest = args.nickId.isEmpty()
+        nickId = args.nickId.ifEmpty {
             sharedPreferences.edit().putBoolean("needSaveNickId", true).apply()
             isAnonymous = true
             sharedPreferences.getString("anonymousNickId", "").toString()
-        } else {
-            args.nickId
         }
         nickName = args.nickName
         userAvatar = args.headerIcon
