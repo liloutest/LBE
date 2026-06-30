@@ -1000,8 +1000,8 @@ class ChatScreenViewModel(application: Application) : AndroidViewModel(applicati
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             if (endSession) {
                 reCreateSession()
-                send(messageSent = {}, preSend = preSend, msgBody = msgBody)
             }
+            send(messageSent = {}, preSend = preSend, msgBody = msgBody)
         }
     }
 

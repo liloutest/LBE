@@ -438,25 +438,11 @@ fun ChatScreen(
                                 .clip(CircleShape)
                                 .align(Alignment.BottomStart)
                                 .clickable {
-                                    if (mediaPermissionState.allPermissionsGranted) {
-                                        launcher.launch(PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageAndVideo))
-                                    } else if (mediaPermissionState.shouldShowRationale) {
+                                    if (!mediaPermissionState.allPermissionsGranted) {
+                                        println("授权检查--->>> ${mediaPermissionState.permissions.map { e -> "${e.permission}, ${e.status}" }} ||||| ${mediaPermissionState.allPermissionsGranted}")
                                         mediaPermissionState.launchMultiplePermissionRequest()
                                     } else {
-                                        val isAnyPermissionPermanentlyDenied =
-                                            mediaPermissionState.permissions.any { !it.status.isGranted && !it.status.shouldShowRationale }
-                                        if (isAnyPermissionPermanentlyDenied) {
-                                            Toast.makeText(
-                                                context,
-                                                context.getString(R.string.str_grant_permission_fail),
-                                                Toast.LENGTH_LONG,
-                                            ).apply {
-                                                setGravity(Gravity.CENTER, 0, 0)
-                                                show()
-                                            }
-                                        } else {
-                                            mediaPermissionState.launchMultiplePermissionRequest()
-                                        }
+                                        launcher.launch(PickVisualMediaRequest(mediaType = ActivityResultContracts.PickVisualMedia.ImageAndVideo))
                                     }
                                 }) {
                             Image(
